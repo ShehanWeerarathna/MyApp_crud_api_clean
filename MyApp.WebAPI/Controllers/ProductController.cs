@@ -21,4 +21,11 @@ public class ProductController : ControllerBase
         ProductDto? productDto = await _productService.GetProductByIdAsync(id);
         return Ok(productDto);
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetProductsAsync()
+    {
+        List<ProductDto>? productDtos = await _productService.GetProductsAsync();
+        return Ok(productDtos);
+    }
 }

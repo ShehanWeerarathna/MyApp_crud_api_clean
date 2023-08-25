@@ -23,4 +23,11 @@ public class ProductService : IProductService
         ProductDto? productDto = _mapper.Map<ProductDto>(product);
         return productDto;
     }
+    
+    public async Task<List<ProductDto>> GetProductsAsync()
+    {
+        List<Product>? products = await _productRepository.GetProductsAsync();
+        List<ProductDto>? productDtos = _mapper.Map<List<ProductDto>>(products);
+        return productDtos;
+    }
 }

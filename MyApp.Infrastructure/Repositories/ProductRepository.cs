@@ -13,9 +13,11 @@ public class ProductRepository : IProductRepository
     {
         _context = context;
     }
-    public Task<List<Product>> GetProductsAsync()
+    public async Task<List<Product>> GetProductsAsync()
     {
-        throw new NotImplementedException();
+        List<Product> products = await _context.Products
+            .Include(x => x.Category).ToListAsync();
+        return products;
     }
 
     public async Task<Product> GetProductByIdAsync(int id)

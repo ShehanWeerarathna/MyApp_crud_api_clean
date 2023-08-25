@@ -5,4 +5,5 @@ namespace MyApp.Application.Services.Interfaces;
 public interface IProductService
 {
     Task<ProductDto> GetProductByIdAsync(int id);
+    Task<List<ProductDto>> GetProductsAsync();
 }
