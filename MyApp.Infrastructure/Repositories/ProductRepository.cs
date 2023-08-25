@@ -1,4 +1,5 @@
-﻿using MyApp.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyApp.Domain.Entities;
 using MyApp.Infrastructure.Data;
 using MyApp.Infrastructure.Repositories.Interfaces;
 
@@ -17,12 +18,23 @@ public class ProductRepository : IProductRepository
         throw new NotImplementedException();
     }
 
-    public Task<Product> GetProductByIdAsync(int id)
+    public async Task<Product> GetProductByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var product = await _context.Products
+                .Include(x => x.Category)
+                .FirstOrDefaultAsync(x => x.Id == id);
+            return product;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-    public Task<Product> CreateProductAsync(Product product)
+    public async Task<Product> CreateProductAsync(Product product)
     {
         throw new NotImplementedException();
     }
