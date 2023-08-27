@@ -38,16 +38,65 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product> CreateProductAsync(Product product)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return product;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 
-    public Task UpdateProductAsync(Product product)
+    public async Task<Product> UpdateProductAsync(Product product)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+            return product;
+
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 
-    public Task DeleteProductAsync(Product product)
+    public async Task<int> DeleteProductAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                return await _context.SaveChangesAsync();
+            }
+            return  0;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+    public async Task<List<Category>> GetCategoriesAsync()
+    {
+        try
+        {
+            var categories = await _context.Categories.ToListAsync();
+            return categories;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 }

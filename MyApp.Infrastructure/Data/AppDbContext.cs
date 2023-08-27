@@ -15,7 +15,17 @@ public class AppDbContext : DbContext
             .HasOne<Category>(s => s.Category)
             .WithMany(x => x.Products)
             .HasForeignKey(s => s.CategoryId);
-        // modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-        // base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Category>().HasData(
+          new Category { Id = 1, Name = "Category1" },
+          new Category { Id = 2, Name = "Category2" },
+          new Category { Id = 3, Name = "Category3" }
+      );
+
+        modelBuilder.Entity<Product>().HasData(
+            new Product { Id = 1, Name = "Product1",  CategoryId = 1 },
+            new Product { Id = 2, Name = "Product2",  CategoryId = 2 },
+            new Product { Id = 3, Name = "Product3",CategoryId = 3 }
+        );
+
     }
 }
