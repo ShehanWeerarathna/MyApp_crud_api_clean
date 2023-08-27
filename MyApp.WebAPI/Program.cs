@@ -17,6 +17,11 @@ builder.Services.Configure<JsonOptions>(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 var app = builder.Build();
+app.UseCors(opt =>
+{
+    opt.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+});
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
