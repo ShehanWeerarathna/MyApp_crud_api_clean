@@ -31,8 +31,8 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> GetProductsAsync()
     {
         //List<ProductDto>? productDtos = await _productService.GetProductsAsync();
-        List<ProductDto>? productDtos = await _mediator.Send(new GetProductsQuery());
-        return Ok(productDtos);
+        ProductListPageDataResponse response = await _mediator.Send(new GetProductsQuery());
+        return Ok(response);
     }
     [HttpGet]
     public async Task<IActionResult> GetProductPageDataAsync()

@@ -11,5 +11,5 @@ namespace MyApp.Application.Queries
     public record GetProductByIdQuery(int Id) : IRequest<ProductPageDataResponse>;
     public record GetProductPageDataQuery() : IRequest<ProductPageDataResponse>;
     public record GetCategoriesQuery() : IRequest<List<CategoryDto>>;
-    public record GetProductsQuery() : IRequest<List<ProductDto>>;
+    public record GetProductsQuery() : IRequest<ProductListPageDataResponse>;
 }

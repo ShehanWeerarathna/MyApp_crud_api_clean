@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyApp.Application.QueryHandlers
 {
-    public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, List<ProductDto>>
+    public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, ProductListPageDataResponse>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
@@ -21,12 +21,16 @@ namespace MyApp.Application.QueryHandlers
             _mapper = mapper;
 
         }
-        public async Task<List<ProductDto>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
+        public async Task<ProductListPageDataResponse> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.GetProductsAsync();
-            var productsDto = _mapper.Map<List<ProductDto>>(products);
+            
+            List<ProductDto> productDtos =  _mapper.Map<List<ProductDto>>(await _productRepository.GetProductsAsync());
+            List<CategoryDto> categoryDtos = _mapper.Map<List<CategoryDto>>(await _productRepository.GetCategoriesAsync());
+            // map categoryDtos to SelectDtos
+            List<SelectDto> selectDtos = categoryDtos.Select(c => new SelectDto { Value = c.Id, Label = c.Name }).ToList();
            
-            return productsDto;
+            return new ProductListPageDataResponse(productDtos, selectDtos);
         }
+      
     }
 }
