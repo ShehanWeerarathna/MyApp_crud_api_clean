@@ -32,6 +32,16 @@ namespace MyApp.Application.QueryHandlers
                 var product = await _productRepository.GetProductByIdAsync(request.Id);
                 productDto = _mapper.Map<ProductDto>(product);
             }
+            else
+            {
+                productDto = new ProductDto
+                {
+                    Id = 0,
+                    Name = "",
+                    Price = 0,
+                    CategoryId = 0,
+                };
+            }
            
       
             List<SelectDto>? selectDtos = categories.Select(c => new SelectDto { Value = c.Id, Label = c.Name }).ToList();
