@@ -22,9 +22,9 @@ public class AppDbContext : DbContext
       );
 
         modelBuilder.Entity<Product>().HasData(
-            new Product { Id = 1, Name = "Product1",  CategoryId = 1 },
-            new Product { Id = 2, Name = "Product2",  CategoryId = 2 },
-            new Product { Id = 3, Name = "Product3",CategoryId = 3 }
+            new Product { Id = 1, Name = "Product1",Price=100,  CategoryId = 1 },
+            new Product { Id = 2, Name = "Product2", Price = 900,  CategoryId = 2 },
+            new Product { Id = 3, Name = "Product3", Price = 150, CategoryId = 3 }
         );
 
     }

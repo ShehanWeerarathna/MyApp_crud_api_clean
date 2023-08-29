@@ -34,7 +34,7 @@ namespace MyApp.Application.CommandHandlers
                 Product = productDto,
                 Categories = selectDtos
             };
-             return productPageDataResponse;
+            return productPageDataResponse;
         }
     }
 }

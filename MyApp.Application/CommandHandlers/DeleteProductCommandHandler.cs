@@ -23,14 +23,14 @@ namespace MyApp.Application.CommandHandlers
         {
             var productDeleted = await _productRepository.DeleteProductAsync(request.Id);
             var categories = await _productRepository.GetCategoriesAsync();
-          
+
             List<SelectDto>? selectDtos = categories.Select(c => new SelectDto { Value = c.Id, Label = c.Name }).ToList();
             ProductPageDataResponse productPageDataResponse = new ProductPageDataResponse
             {
-              
+
                 Categories = selectDtos
             };
-           
+
             return productPageDataResponse;
         }
     }

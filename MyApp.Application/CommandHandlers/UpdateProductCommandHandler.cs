@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MyApp.Application.CommandHandlers
 {
-    public class UpdateProductCommandHandler: IRequestHandler<UpdateProductCommand, ProductPageDataResponse>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ProductPageDataResponse>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
@@ -36,7 +36,7 @@ namespace MyApp.Application.CommandHandlers
                 Product = productDto,
                 Categories = selectDtos
             };
-            
+
             return productPageDataResponse;
         }
 
