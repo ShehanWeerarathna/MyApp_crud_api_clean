@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using MyApp.Application.Commands;
-using MyApp.Application.DTOs;
+using MyApp.Application.ResponseDTOs;
+using MyApp.Domain.DTOs;
 using MyApp.Infrastructure.Repositories.Interfaces;
 
 

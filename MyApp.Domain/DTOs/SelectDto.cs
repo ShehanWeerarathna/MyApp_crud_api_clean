@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Application.DTOs
+namespace MyApp.Domain.DTOs
 {
     public class SelectDto
     {

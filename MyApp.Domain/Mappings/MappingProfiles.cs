@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using MyApp.Application.DTOs;
+using MyApp.Domain.DTOs;
 using MyApp.Domain.Entities;
 
-namespace MyApp.Application.Mappings;
+namespace MyApp.Domain.Mappings;
 
 public class MappingProfiles: Profile
 {

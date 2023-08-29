@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Commands;
-using MyApp.Application.DTOs;
 using MyApp.Application.Queries;
-using MyApp.Application.Services.Interfaces;
+using MyApp.Application.ResponseDTOs;
+using MyApp.Domain.DTOs;
 
 namespace MyApp.WebAPI.Controllers;
 
@@ -33,19 +33,6 @@ public class ProductController : ControllerBase
         //List<ProductDto>? productDtos = await _productService.GetProductsAsync();
         ProductListPageDataResponse response = await _mediator.Send(new GetProductsQuery());
         return Ok(response);
-    }
-    [HttpGet]
-    public async Task<IActionResult> GetProductPageDataAsync()
-    {
-        ProductPageDataResponse? productPageDataResponse = await _mediator.Send(new GetProductPageDataQuery());
-        return Ok(productPageDataResponse);
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> GetCategoriesAsync()
-    {
-        List<CategoryDto>? categoryDtos = await _mediator.Send(new GetCategoriesQuery());
-        return Ok(categoryDtos);
     }
 
     [HttpPost]

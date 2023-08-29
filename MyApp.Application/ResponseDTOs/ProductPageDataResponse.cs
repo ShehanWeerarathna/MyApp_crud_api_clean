@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyApp.Domain.DTOs;
 
-namespace MyApp.Application.DTOs
+namespace MyApp.Application.ResponseDTOs
 {
     public class ProductPageDataResponse
     {
