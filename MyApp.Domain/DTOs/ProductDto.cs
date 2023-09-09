@@ -1,4 +1,4 @@
-﻿namespace MyApp.Application.DTOs;
+﻿namespace MyApp.Domain.DTOs;
 
 public class ProductDto
 {
